@@ -131,7 +131,7 @@ export default function Home() {
           </div>
         </form>
 
-        {!users.length === 0 && (
+        {users.length > 0 && (
           <table className='table-auto'>
             <thead>
               <tr>
