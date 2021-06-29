@@ -62,95 +62,97 @@ export default function Home() {
   }
 
   return (
-    <div className='min-h-screen flex  bg-white py-12 px-4 sm:px-6 lg:px-8'>
-      <div className='w-full space-y-8'>
-        <>
-          {registerError && (
-            <div className='flex items-center font-medium tracking-wide text-red-500 bg-red-100'>{error}</div>
-          )}
-          <form className='mt-8 max-w-md space-y-6' onSubmit={registerUser}>
-            <input type='hidden' name='remember' value='true' />
-            <div className='rounded-md shadow-sm -space-y-px'>
-              <div>
-                <label htmlFor='email-address' className='sr-only'>
-                  Email address
-                </label>
-                <input
-                  onChange={handleOnChange}
-                  id='email-address'
-                  name='email'
-                  type='email'
-                  autoComplete='email'
-                  required
-                  className='appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm'
-                  placeholder='Email address'
-                />
-              </div>
-              <div>
-                <label htmlFor='name' className='sr-only'>
+    <div className='min-h-screen px-4 py-12 sm:px-6 lg:px-8'>
+      <div className='w-full'>
+        {registerError && (
+          <div className='flex items-center font-medium tracking-wide text-red-500 bg-red-100'>{error}</div>
+        )}
+
+        <form className='max-w-md mb-6 sm:mb-8 lg:mb-10' onSubmit={registerUser}>
+          <input type='hidden' name='remember' value='true' />
+
+          <div>
+            <h1 className='text-lg font-semibold text-primary'>Users demo</h1>
+            <p className='mb-3 text-secondary'>
+              This app is deployed to vercel and connected to your PlanetScale database. The example project can be
+              found{' '}
+              <a className='text-blue' href='https://github.com/planetscale/vercel-integration-example'>
+                here
+              </a>
+              .
+            </p>
+          </div>
+
+          <div className='mb-2'>
+            <label htmlFor='name'>Name</label>
+            <input
+              onChange={handleOnChange}
+              id='name'
+              name='name'
+              type='text'
+              required
+              className='w-full px-1.5 py-sm rounded text-base ring-offset-0 border h-button shadow-sm focus-ring bg-secondary text-primary border-secondary'
+            />
+          </div>
+          <div className='mb-2'>
+            <label htmlFor='email-address'>Email address</label>
+            <input
+              onChange={handleOnChange}
+              id='email-address'
+              name='email'
+              type='email'
+              autoComplete='email'
+              required
+              className='w-full px-1.5 py-sm rounded text-base ring-offset-0 border h-button shadow-sm focus-ring bg-secondary text-primary border-secondary'
+            />
+          </div>
+          <div className='mb-3'>
+            <label htmlFor='password'>Password</label>
+            <input
+              onChange={handleOnChange}
+              id='password'
+              name='password'
+              type='password'
+              autoComplete='current-password'
+              required
+              className='w-full px-1.5 py-sm rounded text-base ring-offset-0 border h-button shadow-sm focus-ring bg-secondary text-primary border-secondary'
+            />
+          </div>
+          <div>
+            <button
+              disabled={loading}
+              type='submit'
+              className={`${
+                loading && 'disabled:opacity-50'
+              } box-border relative inline-flex items-center justify-center text-center no-underline leading-none whitespace-nowrap font-semibold rounded flex-shrink-0 transition select-none overflow-hidden focus-ring bg-gray-800 hover:bg-gray-900 dark:bg-gray-50 text-gray-50 dark:text-gray-800 dark:hover:bg-white dark:hover:text-gray-900 cursor-pointer hover:text-white h-button py-1.5 px-2`}
+            >
+              {loading ? 'Adding...' : 'Add demo user'}
+            </button>
+          </div>
+        </form>
+
+        {users.length > 0 && (
+          <table className='table-auto'>
+            <thead>
+              <tr>
+                <th className='w-6/12' scope='col'>
                   Name
-                </label>
-                <input
-                  onChange={handleOnChange}
-                  id='name'
-                  name='name'
-                  type='text'
-                  required
-                  className='appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm'
-                  placeholder='Name'
-                />
-              </div>
-              <div>
-                <label htmlFor='password' className='sr-only'>
-                  Password
-                </label>
-                <input
-                  onChange={handleOnChange}
-                  id='password'
-                  name='password'
-                  type='password'
-                  autoComplete='current-password'
-                  required
-                  className='appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm'
-                  placeholder='Password'
-                />
-              </div>
-            </div>
-
-            <div>
-              <button
-                disabled={loading}
-                type='submit'
-                className={`${
-                  loading && 'disabled:opacity-50'
-                } group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500`}
-              >
-                {loading ? 'Adding...' : 'Add'}
-              </button>
-            </div>
-          </form>
-        </>
-
-        <table className='table-auto'>
-          <thead>
-            <tr>
-              <th className='w-6/12' scope='col'>
-                Name
-              </th>
-              <th className='w-6/12' scope='col'>
-                Email
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            {users.map((user) => (
-              <tr className='font-light' key={user.id}>
-                <td>{user.email}</td>
-                <td>{user.name}</td>
+                </th>
+                <th className='w-6/12' scope='col'>
+                  Email
+                </th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {users.map((user) => (
+                <tr key={user.id}>
+                  <td>{user.name}</td>
+                  <td>{user.email}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        )}
       </div>
     </div>
   )
