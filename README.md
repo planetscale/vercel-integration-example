@@ -32,7 +32,9 @@ CREATE TABLE users (
 - Head over to your planetscale dashboard and create a new deploy request with `<branch-name>`
 
 ## Clone & Deploy to vercel
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https%3A%2F%2Fgithub.com%2Fplanetscale%2Fvercel-integration-example&project-name=planetscale-next-js&repository-name=vercel-integration-example&integration-ids=oac_ni8CGiTU3oM25q1k2L6unVMp)
+<a href="https://vercel.com/new/git/external?repository-url=https%3A%2F%2Fgithub.com%2Fplanetscale%2Fvercel-next-js&project-name=planetscale-next-js&repository-name=planetscale-next-js&integration-ids=oac_ni8CGiTU3oM25q1k2L6unVMp" target="_blank" rel="noopener noreferrer">
+  <img src="https://vercel.com/button" alt="Deploy with Vercel"/>
+</a>
 
 
 - The integration will automatically add the following environment variables to your Vercel project(s)
