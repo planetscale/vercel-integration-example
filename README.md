@@ -8,7 +8,7 @@ A [next.js](https://nextjs.org/) app deployed to [vercel](https://vercel.com) wi
 ```sh
 pscale auth login
 ```
-- Create a new database
+- Create a new database (_skip this step if you already have a database_)
 ```sh
 pscale database create <database>
 ```
