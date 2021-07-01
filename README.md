@@ -10,15 +10,15 @@ pscale auth login
 ```
 - Create a new database
 ```sh
-pscale database create <db-name>
+pscale database create <database>
 ```
-- Create a new branch
+- Create a `development` branch
 ```sh
-pscale branch create <db-name> <branch-name>
+pscale branch create <database> <branch>
 ```
 - Connect to your branch
 ```sh
-pscale shell <db-name> <branch-name>
+pscale shell <database> <branch>
 ```
 - Insert example tables
 ```sql
@@ -29,7 +29,22 @@ CREATE TABLE users (
   name varchar(255)
 );
 ```
-- Head over to your planetscale dashboard and create a new deploy request with `<branch-name>`
+- Create a **deploy request** 
+```bash
+pscale deploy-request create <database> <branch>
+```
+- _Deploy_ the **deploy request** 
+```bash
+pscale deploy-request deploy <database> <deploy-request-number>
+```
+- To find your `<deploy-request-number>`, simply run:
+```bash
+pscale deploy-request list <database>
+```
+- Merge your `development` branch into `main`
+```bash
+pscale deploy-request deploy <database> <deploy-request-number>
+```
 
 ## Clone & Deploy to vercel
 <a href="https://vercel.com/new/git/external?repository-url=https%3A%2F%2Fgithub.com%2Fplanetscale%2Fvercel-integration-example&project-name=vercel-integration-example&repository-name=vercel-integration-example&integration-ids=oac_ni8CGiTU3oM25q1k2L6unVMp">
