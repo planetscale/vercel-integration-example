@@ -1,5 +1,6 @@
 import useSWR from 'swr'
 import { useEffect, useState } from 'react'
+import Filter from 'bad-words'
 
 const fetcher = (url) => fetch(url).then((res) => res.json())
 
@@ -7,7 +8,6 @@ export default function Home() {
   const { data: fetchedData, error } = useSWR('/api/users', fetcher)
   const [registerError, setRegisterError] = useState(null)
   const [loading, setLoading] = useState(false)
-  const [success, setSuccess] = useState(false)
   const [state, setState] = useState({
     email: null,
     name: null,
@@ -15,6 +15,7 @@ export default function Home() {
     users: []
   })
   const { users } = state
+  const filter = new Filter()
 
   useEffect(() => {
     if (fetchedData) {
@@ -22,7 +23,6 @@ export default function Home() {
     }
   }, [fetchedData])
 
-  // debugger
   console.log('errror', error)
   if (error)
     return (
@@ -133,7 +133,9 @@ export default function Home() {
 
     const res = await fetch('api/users', {
       body: JSON.stringify({
-        ...state
+        email: filter.clean(state.email),
+        password: filter.clean(state.password),
+        name: filter.clean(state.name)
       }),
       headers: {
         'Content-Type': 'application/json'
