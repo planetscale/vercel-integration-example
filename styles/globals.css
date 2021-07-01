@@ -50,11 +50,20 @@
   --text-red-disabled: var(--red-300);
 }
 
+html {
+  @apply h-full;
+}
+
 body {
+  @apply h-full;
   @apply text-base;
   @apply text-primary;
   @apply bg-primary;
   @apply antialiased;
+}
+
+#__next {
+  @apply h-full;
 }
 
 b,
@@ -138,4 +147,35 @@ dd {
   @apply py-1.5;
   @apply border-b;
   @apply col-span-2;
+}
+
+.spinner-ring {
+  @apply absolute;
+  @apply h-3;
+  @apply w-3;
+  @apply border-t;
+  @apply border-gray-500;
+  @apply rounded-full;
+  animation: spinner 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+}
+
+.spinner-ring:nth-child(1) {
+  animation-delay: -0.45s;
+}
+
+.spinner-ring:nth-child(2) {
+  animation-delay: -0.3s;
+}
+
+.spinner-ring:nth-child(3) {
+  animation-delay: -0.15s;
+}
+
+@keyframes spinner {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
