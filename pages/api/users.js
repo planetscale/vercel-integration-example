@@ -1,14 +1,13 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import { PSDB } from 'planetscale-node'
-// something
+
+const conn = new PSDB('main')
 
 export default async (req, res) => {
   const {
     body: { email, name, password },
     method
   } = req
-  const conn = new PSDB('main')
-
   switch (method) {
     case 'POST':
       const [rows, fields] = await conn.query(
