@@ -111,7 +111,7 @@ export default function Home() {
           <div className='spinner-ring'></div>
           <div className='spinner-ring'></div>
         </div>
-        <div className='mt-1'>loading...</div>
+        <div className='mt-1'>Loading users...</div>
       </div>
     )
 
