@@ -8,6 +8,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "bad-words": "^3.0.4",
     "next": "10.x",
     "planetscale-node": "^0.0.2",
     "react": "17.x",
