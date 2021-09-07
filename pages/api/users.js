@@ -1,7 +1,15 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-import { PSDB } from 'planetscale-node'
+import mysql from 'mysql2'
 
-const conn = new PSDB('main')
+const conn = mysql.createConnection({
+  database: PLANETSCALE_DB,
+  host: PLANETSCALE_DB_HOST,
+  password: PLANETSCALE_DB_PASSWORD,
+  ssl: {
+    ca: PLANETSCALE_SSL_CERT_PATH
+  },
+  user: PLANETSCALE_DB_USERNAME
+})
 
 export default async (req, res) => {
   const {
