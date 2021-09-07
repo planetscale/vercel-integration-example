@@ -40,7 +40,7 @@ export default async (req, res) => {
       } catch (e) {
         const error = new Error('An error occurred while connecting to the database')
         error.status = 500
-        error.info = { message: 'An error occurred while connecting to the database' }
+        error.info = { message: 'An error occurred while connecting to the database', more: e.message }
         throw error
       }
 
