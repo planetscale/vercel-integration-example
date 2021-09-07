@@ -1,5 +1,6 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import mysql from 'mysql2'
+import fs from 'fs'
 
 const {
   PLANETSCALE_DB,
@@ -14,7 +15,7 @@ const conn = mysql.createConnection({
   host: PLANETSCALE_DB_HOST,
   password: PLANETSCALE_DB_PASSWORD,
   ssl: {
-    ca: PLANETSCALE_SSL_CERT_PATH
+    ca: fs.readFileSync(PLANETSCALE_SSL_CERT_PATH)
   },
   user: PLANETSCALE_DB_USERNAME
 })
