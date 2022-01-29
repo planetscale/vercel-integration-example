@@ -1,0 +1,68 @@
+---
+- - :permit
+  - bsd-2-clause
+  - :who:
+    :why:
+    :versions: []
+    :when: 2022-01-29 15:07:40.287189000 Z
+- - :permit
+  - bsd-3-clause
+  - :who:
+    :why:
+    :versions: []
+    :when: 2022-01-29 15:07:40.591034000 Z
+- - :permit
+  - apache-2.0
+  - :who:
+    :why:
+    :versions: []
+    :when: 2022-01-29 15:07:40.851596000 Z
+- - :permit
+  - MIT
+  - :who:
+    :why:
+    :versions: []
+    :when: 2022-01-29 15:07:41.110099000 Z
+- - :permit
+  - ISC
+  - :who:
+    :why:
+    :versions: []
+    :when: 2022-01-29 15:07:41.372622000 Z
+- - :permit
+  - mpl-2.0
+  - :who:
+    :why:
+    :versions: []
+    :when: 2022-01-29 15:07:41.634329000 Z
+- - :permit
+  - 0bsd
+  - :who:
+    :why:
+    :versions: []
+    :when: 2022-01-29 15:16:48.730589000 Z
+- - :license
+  - pako
+  - MIT
+  - :who:
+    :why:
+    :versions: []
+    :when: 2022-01-29 15:17:23.316635000 Z
+- - :approve
+  - caniuse-lite
+  - :who:
+    :why:
+    :versions: []
+    :when: 2022-01-29 15:17:46.317415000 Z
+- - :approve
+  - didyoumean
+  - :who:
+    :why:
+    :versions: []
+    :when: 2022-01-29 15:17:51.978425000 Z
+- - :approve
+  - string-hash
+  - :who:
+    :why:
+    :versions: []
+    :when: 2022-01-29 15:17:56.595119000 Z
