@@ -1,7 +1,24 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-import { PSDB } from 'planetscale-node'
+import mysql from 'mysql2'
+import fs from 'fs'
 
-const conn = new PSDB('main')
+const {
+  PLANETSCALE_DB,
+  PLANETSCALE_DB_HOST,
+  PLANETSCALE_DB_USERNAME,
+  PLANETSCALE_DB_PASSWORD,
+  PLANETSCALE_SSL_CERT_PATH
+} = process.env
+
+const conn = mysql.createConnection({
+  database: PLANETSCALE_DB,
+  host: PLANETSCALE_DB_HOST,
+  password: PLANETSCALE_DB_PASSWORD,
+  ssl: {
+    ca: fs.readFileSync(PLANETSCALE_SSL_CERT_PATH)
+  },
+  user: PLANETSCALE_DB_USERNAME
+})
 
 export default async (req, res) => {
   const {
@@ -10,21 +27,21 @@ export default async (req, res) => {
   } = req
   switch (method) {
     case 'POST':
-      const [rows, fields] = await conn.query(
-        `insert into users (email, name, password) values ('${email}', '${name}', '${password}')`
-      )
+      const [rows, fields] = await conn
+        .promise()
+        .query(`insert into users (email, name, password) values ('${email}', '${name}', '${password}')`)
       res.statusCode = 201
       res.json({ email, name })
       break
     case 'GET':
       try {
-        const [getRows, _] = await conn.query('select * from users')
+        const [getRows, _] = await conn.promise().query('select * from users')
         res.statusCode = 200
         res.json(getRows)
       } catch (e) {
-        error = new Error('An error occurred while connecting to the database')
+        const error = new Error('An error occurred while connecting to the database')
         error.status = 500
-        error.info = { message: 'An error occurred while connecting to the database' }
+        error.info = { message: 'An error occurred while connecting to the database', more: e.message }
         throw error
       }
 
