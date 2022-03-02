@@ -53,6 +53,10 @@ pscale deploy-request deploy <database> <deploy-request-number>
 
 
 - The integration will automatically add the following environment variables to your Vercel project(s)
+  - `PLANETSCALE_SSL_CERT_PATH`
+  - `PLANETSCALE_DB_HOST`
+  - `PLANETSCALE_DB_PASSWORD`
+  - `PLANETSCALE_DB_USERNAME`
   - `PLANETSCALE_DB`
   - `PLANETSCALE_ORG`
   - `PLANETSCALE_TOKEN`
