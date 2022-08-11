@@ -1,3 +1,5 @@
+> **Note:** We have archived this repository since it is **outdated**. If you are looking for how to use Vercel + PlanetScale together, see our [Deploy to Vercel docs](https://planetscale.com/docs/tutorials/deploy-to-vercel). Or if you are looking for the latest Next.js starter application, which can be deployed to Vercel, see our [Next.js starter repo](https://github.com/planetscale/nextjs-starter) and [Connect a Next.js application to PlanetScale
+ docs](https://planetscale.com/docs/tutorials/connect-nextjs-app).
 
 # Vercel + Planetscale
 A [next.js](https://nextjs.org/) app deployed to [vercel](https://vercel.com) with a [planetscale](https://planetscale.com) integration. This example app uses the [planetscale-node](https://github.com/planetscale/planetscale-node) client to query the database
