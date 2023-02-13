@@ -17,17 +17,9 @@ export default async (req, res) => {
       res.json({ email, name })
       break
     case 'GET':
-      try {
-        const [getRows, _] = await conn.query('select * from users')
-        res.statusCode = 200
-        res.json(getRows)
-      } catch (e) {
-        error = new Error('An error occurred while connecting to the database')
-        error.status = 500
-        error.info = { message: 'An error occurred while connecting to the database' }
-        throw error
-      }
-
+      const [getRows, _] = await conn.query('select * from users')
+      res.statusCode = 200
+      res.json(getRows)
       break
     default:
       res.setHeader('Allow', ['GET', 'PUT'])
